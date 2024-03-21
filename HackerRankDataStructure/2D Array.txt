@@ -1,0 +1,51 @@
+import java.io.*
+import java.math.*
+import java.security.*
+import java.text.*
+import java.util.*
+import java.util.concurrent.*
+import java.util.function.*
+import java.util.regex.*
+import java.util.stream.*
+import kotlin.collections.*
+import kotlin.comparisons.*
+import kotlin.io.*
+import kotlin.jvm.*
+import kotlin.jvm.functions.*
+import kotlin.jvm.internal.*
+import kotlin.ranges.*
+import kotlin.sequences.*
+import kotlin.text.*
+
+/*
+ * Complete the 'reverseArray' function below.
+ *
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY a as parameter.
+ */
+
+fun reverseArray(a: Array<Int>): Array<Int> {
+    // Write your code here
+    val midpoint = (a.size/2)-1
+    if(midpoint<0) return a
+    
+    var reverseIndex  = a.size -1
+    
+    for(index in 0..midpoint){
+        var tmp = a[index]
+        a[index] =a[reverseIndex ]
+        a[reverseIndex ] =tmp
+        reverseIndex--
+    }
+    return a   
+}
+
+fun main(args: Array<String>) {
+    val arrCount = readLine()!!.trim().toInt()
+
+    val arr = readLine()!!.trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    val res = reverseArray(arr)
+
+    println(res.joinToString(" "))
+}
